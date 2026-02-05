@@ -9,7 +9,7 @@ export const itinerary = [
         time: '傍晚',
         location: 'Vörösmarty Square 復活節市集',
         desc: '在初春微涼的空氣中喝一杯熱紅酒，感受節慶氣氛。',
-        image: 'https://images.unsplash.com/photo-1578351117548-83f51f98d197?w=800',
+        image: 'https://images.unsplash.com/photo-1533929736458-ca588d08c8be?auto=format&fit=crop&w=800&q=80',
         lat: 47.4967,
         lng: 19.0504
       }
@@ -30,7 +30,7 @@ export const itinerary = [
         time: '上午',
         location: '馬提亞斯教堂 & 漁人堡',
         desc: '漫步在純白建築中，這裡是拍雙人合照的最佳景點。',
-        image: 'https://images.unsplash.com/photo-1551888192-2435ba0a2b7a?w=800',
+        image: 'https://images.unsplash.com/photo-1549488344-1f9b8d2bd1f3?auto=format&fit=crop&w=800&q=80',
         lat: 47.5022,
         lng: 19.0348
       },
@@ -38,7 +38,7 @@ export const itinerary = [
         time: '晚上',
         location: '多瑙河夕陽遊船',
         desc: '預約晚間航次，在燈火通明的國會大廈前對飲，極致浪漫。',
-        image: 'https://images.unsplash.com/photo-1527672829631-73dc05a2e45d?w=800',
+        image: 'https://images.unsplash.com/photo-1549488344-1f9b8d2bd1f3?auto=format&fit=crop&w=800&q=80',
         lat: 47.4979,
         lng: 19.0494
       }
@@ -59,7 +59,7 @@ export const itinerary = [
         time: '上午',
         location: 'Ludwig Museum (路德維希博物館)',
         desc: '參觀台灣當代藝術展，享受知性的藝術早晨。',
-        image: 'https://images.unsplash.com/photo-1518998053502-51dd0c694202?w=800',
+        image: 'https://images.unsplash.com/photo-1533929736458-ca588d08c8be?auto=format&fit=crop&w=800&q=80',
         lat: 47.4705,
         lng: 19.0708,
         note: '展覽至 3/29 止。'
@@ -68,7 +68,7 @@ export const itinerary = [
         time: '晚上',
         location: 'Szimpla Kert 廢墟酒吧',
         desc: '感受布達佩斯獨特的夜生活，探訪迷幻的內部裝飾。',
-        image: 'https://images.unsplash.com/photo-1605652594611-667104b901a5?w=800',
+        image: 'https://images.unsplash.com/photo-1549488344-1f9b8d2bd1f3?auto=format&fit=crop&w=800&q=80',
         lat: 47.4968,
         lng: 19.0631
       }
@@ -89,7 +89,7 @@ export const itinerary = [
         time: '下午',
         location: '聖史蒂芬大教堂',
         desc: '維也納的心臟，彩色屋頂與歌德式高塔令人驚嘆。',
-        image: 'https://images.unsplash.com/photo-1600642013149-65239994c632?w=800',
+        image: 'https://images.unsplash.com/photo-1516550893923-42d28e5677af?auto=format&fit=crop&w=800&q=80',
         lat: 48.2084,
         lng: 16.3731
       }
@@ -110,7 +110,7 @@ export const itinerary = [
         time: '上午',
         location: '熊布朗宮 (Schönbrunn Palace)',
         desc: '漫步在廣闊的皇家花園與凱旋門，俯瞰整座維也納城。',
-        image: 'https://images.unsplash.com/photo-1563811771046-ba984ff30900?w=800',
+        image: 'https://images.unsplash.com/photo-1563811771046-ba984ff30900?auto=format&fit=crop&w=800&q=80',
         lat: 48.1848,
         lng: 16.3122
       }
@@ -131,7 +131,7 @@ export const itinerary = [
         time: '上午',
         location: '美景宮 (Belvedere) - 《吻》',
         desc: '親眼見證克林姆的名作，金色的浪漫氛圍最適合兩人同行。',
-        image: 'https://images.unsplash.com/photo-1605374463426-386df2e6e300?w=800',
+        image: 'https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?auto=format&fit=crop&w=800&q=80',
         lat: 48.1915,
         lng: 16.3808
       },
@@ -139,7 +139,7 @@ export const itinerary = [
         time: '下午',
         location: '納許市場 (Naschmarkt)',
         desc: '體驗維也納人的在地生活，購買起司、乾果或特色紀念品。',
-        image: 'https://images.unsplash.com/photo-1533900298318-6b8da08a523e?w=800',
+        image: 'https://images.unsplash.com/photo-1516550893923-42d28e5677af?auto=format&fit=crop&w=800&q=80',
         lat: 48.1979,
         lng: 16.3614
       }
@@ -160,7 +160,7 @@ export const itinerary = [
         time: '下午',
         location: '蓋勒特山 (Gellért Hill) 夕陽',
         desc: '爬一小段山路，收獲整個多瑙河兩岸的絕美全景。',
-        image: 'https://images.unsplash.com/photo-1562184647-a37a716c1482?w=800',
+        image: 'https://images.unsplash.com/photo-1549488344-1f9b8d2bd1f3?auto=format&fit=crop&w=800&q=80',
         lat: 47.4867,
         lng: 19.0483
       }
@@ -181,7 +181,7 @@ export const itinerary = [
         time: '上午',
         location: '中央市場 (Great Market Hall)',
         desc: '採買貴腐酒與鵝肝醬，這裡是建築迷必訪的鐵道風格市場。',
-        image: 'https://images.unsplash.com/photo-1555392858-45091c863922?w=800',
+        image: 'https://images.unsplash.com/photo-1533929736458-ca588d08c8be?auto=format&fit=crop&w=800&q=80',
         lat: 47.4871,
         lng: 19.0585
       },
@@ -189,7 +189,7 @@ export const itinerary = [
         time: '下午',
         location: '匈牙利國會大廈',
         desc: '全世界最美建築之一，內部的金碧輝煌一定要進去參觀。',
-        image: 'https://images.unsplash.com/photo-1565426960433-a17d8566428e?w=800',
+        image: 'https://images.unsplash.com/photo-1549488344-1f9b8d2bd1f3?auto=format&fit=crop&w=800&q=80',
         lat: 47.5071,
         lng: 19.0456,
         note: '需事先預約導覽。'
@@ -211,7 +211,7 @@ export const itinerary = [
         time: '早上',
         location: '多瑙河畔慢步早午餐',
         desc: '為旅程劃下完美句點，靜靜欣賞最後一眼多瑙河。',
-        image: 'https://images.unsplash.com/photo-1527672829631-73dc05a2e45d?w=800',
+        image: 'https://images.unsplash.com/photo-1549488344-1f9b8d2bd1f3?auto=format&fit=crop&w=800&q=80',
         lat: 47.495,
         lng: 19.05
       }

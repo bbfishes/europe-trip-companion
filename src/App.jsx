@@ -10,7 +10,8 @@ import {
   Camera, 
   Heart,
   ExternalLink,
-  Info
+  Info,
+  Image as ImageIcon
 } from 'lucide-react';
 
 function App() {
@@ -19,6 +20,11 @@ function App() {
   const openMaps = (loc, lat, lng) => {
     const url = `https://www.google.com/maps/search/?api=1&query=${lat},${lng}`;
     window.open(url, '_blank');
+  };
+
+  const handleImageError = (e) => {
+    e.target.style.display = 'none';
+    e.target.nextSibling.style.display = 'flex';
   };
 
   return (
@@ -48,7 +54,19 @@ function App() {
                   <div className="section-divider">Spots</div>
                   {day.activities.map((act, aIdx) => (
                     <div key={aIdx} className="activity">
-                      <img src={act.image} alt={act.location} className="spot-img" loading="lazy" />
+                      <div className="image-container">
+                        <img 
+                          src={act.image} 
+                          alt={act.location} 
+                          className="spot-img" 
+                          loading="lazy" 
+                          onError={handleImageError}
+                        />
+                        <div className="img-placeholder" style={{ display: 'none' }}>
+                          <ImageIcon size={24} />
+                          <span>Scenic View</span>
+                        </div>
+                      </div>
                       <div className="activity-header">
                         <div className="activity-loc">{act.location}</div>
                         <div className="activity-time">{act.time}</div>
