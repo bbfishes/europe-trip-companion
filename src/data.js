@@ -11,6 +11,11 @@ export const itinerary = [
         lat: 47.4967,
         lng: 19.0504
       }
+    ],
+    dining: [
+      { name: 'Gerbeaud Café', desc: '百年傳奇咖啡館，建築優美且具歷史氣息。', lat: 47.4969, lng: 19.0503 },
+      { name: 'Comme Chez Soi', desc: '極受歡迎的義式餐廳，服務熱情、鵝肝料理驚艷。', lat: 47.4957, lng: 19.0515 },
+      { name: 'Onyx Restaurant', desc: '米其林等級，適合想體驗匈牙利現代精緻料理的人。', lat: 47.4968, lng: 19.0502 }
     ]
   },
   {
@@ -39,6 +44,11 @@ export const itinerary = [
         lat: 47.4979,
         lng: 19.0494
       }
+    ],
+    dining: [
+      { name: 'Ruszwurm Cukrászda', desc: '布達佩斯最古老的甜點店，必點奶油蛋糕。', lat: 47.5015, lng: 19.0335 },
+      { name: '21 Hungarian Kitchen', desc: '以現代手法詮釋傳統匈牙利菜，氛圍輕鬆。', lat: 47.5025, lng: 19.0322 },
+      { name: 'Baltazár Grill', desc: '位於城堡區內，炭火烤肉和優質葡萄酒的絕佳選擇。', lat: 47.5034, lng: 19.0305 }
     ]
   },
   {
@@ -61,6 +71,11 @@ export const itinerary = [
         lat: 47.4968,
         lng: 19.0631
       }
+    ],
+    dining: [
+      { name: 'Mazel Tov', desc: '猶太區最美的中東風格餐廳，綠意盎然。', lat: 47.5005, lng: 19.0664 },
+      { name: 'Két Szerecsen', desc: '復古咖啡館氛圍，早午餐與 tapas 皆出色。', lat: 47.5036, lng: 19.0592 },
+      { name: 'Bors Gastro Bar', desc: '超人氣街頭美食，創意濃湯與熱壓三明治。', lat: 47.497, lng: 19.063 }
     ]
   },
   {
@@ -83,6 +98,11 @@ export const itinerary = [
         lat: 48.2084,
         lng: 16.3731
       }
+    ],
+    dining: [
+      { name: 'Figlmüller Bäckerstraße', desc: '以「維也納比臉大豬排」聞名，務必預約。', lat: 48.2091, lng: 16.3742 },
+      { name: 'Plachutta Wollzeile', desc: '維也納水煮牛 (Tafelspitz) 的代名詞，傳統美味。', lat: 48.2085, lng: 16.3788 },
+      { name: 'Café Central', desc: '世界名氣最高的咖啡館之一，曾是眾多名人的聚會地。', lat: 48.2104, lng: 16.3654 }
     ]
   },
   {
@@ -93,11 +113,16 @@ export const itinerary = [
       {
         time: '全天',
         location: '熊布朗宮 (Schönbrunn Palace)',
-        desc: '週日店家休息，但博物館與皇宮照常開放，是參觀華麗建築的最佳時機。',
+        desc: '週日店家休息，但博物館與皇宮照常開放。',
         lat: 48.1848,
         lng: 16.3122,
         note: '週日超市不營業，急需可去維也納總站。'
       }
+    ],
+    dining: [
+      { name: 'Brandauers Schlossbräu', desc: '就在皇宮附近，傳統奧式釀酒餐廳，份量十足。', lat: 48.1878, lng: 16.3015 },
+      { name: 'Meierei im Stadtpark', desc: '精緻的奧地利菜餚，起司選擇極多且環境優美。', lat: 48.2037, lng: 16.3803 },
+      { name: 'Café Residenz', desc: '皇宮內的咖啡廳，可以在此看傳統蘋果捲的製作秀。', lat: 48.1865, lng: 16.3128 }
     ]
   },
   {
@@ -126,6 +151,11 @@ export const itinerary = [
         lat: 48.203,
         lng: 16.3691
       }
+    ],
+    dining: [
+      { name: 'Neni am Naschmarkt', desc: '市場內的人氣店，提供非常現代的地中海料理。', lat: 48.1985, lng: 16.3605 },
+      { name: 'Salm Bräu', desc: '美景宮附近，推薦烤豬肋排與其自釀啤酒。', lat: 48.1952, lng: 16.3814 },
+      { name: 'Gastwirtschaft Wratschko', desc: '非常有氛圍的當地小酒館，深受本地人喜愛。', lat: 48.2045, lng: 16.3532 }
     ]
   },
   {
@@ -143,10 +173,15 @@ export const itinerary = [
       {
         time: '下午',
         location: '蓋勒特山 (Gellért Hill)',
-        desc: '俯瞰夕陽下的多瑙河與橫跨兩岸的橋樑。',
+        desc: '俯瞰夕陽下的多瑙河。',
         lat: 47.4867,
         lng: 19.0483
       }
+    ],
+    dining: [
+      { name: 'Borkonyha Winekitchen', desc: '米其林一星，葡萄酒單極為豐富且水準極高。', lat: 47.5002, lng: 19.053 },
+      { name: 'Menza', desc: '帶有復古感的現代餐廳，CP值極高的匈牙利菜。', lat: 47.5034, lng: 19.0612 },
+      { name: 'Zeller Bistro', desc: '熱情友好的氣氛，主打匈牙利在地小農食材。', lat: 47.502, lng: 19.054 }
     ]
   },
   {
@@ -157,7 +192,7 @@ export const itinerary = [
       {
         time: '上午',
         location: '中央市場 (Great Market Hall)',
-        desc: '購買貴腐酒 (Tokaji)、紅椒粉、鵝肝醬等伴手禮。',
+        desc: '購買貴腐酒 (Tokaji)、紅椒粉、鵝肝醬等。',
         lat: 47.4871,
         lng: 19.0585
       },
@@ -166,8 +201,7 @@ export const itinerary = [
         location: '國會大廈',
         desc: '參觀國會大廈 (需先預約導覽)。',
         lat: 47.5071,
-        lng: 19.0456,
-        note: '建議 1 個月前預約票券。'
+        lng: 19.0456
       },
       {
         time: '傍晚',
@@ -176,6 +210,11 @@ export const itinerary = [
         lat: 47.5181,
         lng: 19.0814
       }
+    ],
+    dining: [
+      { name: 'Gundel Cafe Patisserie Restaurant', desc: '匈牙利傳奇級名店，塞切尼溫泉旁的優雅選擇。', lat: 47.5173, lng: 19.0788 },
+      { name: 'New York Café', desc: '被譽為世界最美，華麗到令人屏息，適合下午茶。', lat: 47.5002, lng: 19.0706 },
+      { name: 'Párisi Passage Café', desc: '在絕美拱廊下的午餐，視覺與味覺的雙重饗宴。', lat: 47.4932, lng: 19.0548 }
     ]
   },
   {
@@ -189,22 +228,12 @@ export const itinerary = [
         desc: '享受一個慢步調的早晨。',
         lat: 47.495,
         lng: 19.05
-      },
-      {
-        time: '中午',
-        location: '100E 機場巴士站',
-        desc: '搭乘巴士直達機場 (BUD)。',
-        lat: 47.4979,
-        lng: 19.0503,
-        note: '車資需額外購買專用票。'
       }
+    ],
+    dining: [
+      { name: 'Deryne Bisztro', desc: '布達側的名店，氛圍優雅，早午餐的最佳選擇。', lat: 47.4975, lng: 19.0285 },
+      { name: 'Anyam Dobolta', desc: '精緻的本地早餐店，溫馨且食物天然。', lat: 47.494, lng: 19.041 },
+      { name: 'Szimply', desc: '隱身小巷中，創意十足的健康現代早午餐。', lat: 47.4945, lng: 19.0535 }
     ]
   }
-];
-
-export const restaurants = [
-  { name: 'New York Café', city: 'Budapest', desc: '世界最美咖啡館', lat: 47.5002, lng: 19.0706 },
-  { name: 'Cafe Sacher', city: 'Vienna', desc: '原創薩赫蛋糕', lat: 48.2039, lng: 16.3697 },
-  { name: 'Szimpla Kert', city: 'Budapest', desc: '廢墟酒吧鼻祖', lat: 47.4968, lng: 19.0631 },
-  { name: 'Figlmüller', city: 'Vienna', desc: '維也納比臉大豬排', lat: 48.2091, lng: 16.3742 }
 ];
