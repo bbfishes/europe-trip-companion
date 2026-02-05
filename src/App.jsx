@@ -1,6 +1,17 @@
 import React, { useState } from 'react';
 import { itinerary } from './data';
-import { Calendar, MapPin, Utensils, Navigation, ChevronRight, Info } from 'lucide-react';
+import { 
+  Calendar, 
+  MapPin, 
+  Utensils, 
+  Navigation, 
+  Bus, 
+  Train, 
+  Camera, 
+  Heart,
+  ExternalLink,
+  Info
+} from 'lucide-react';
 
 function App() {
   const [activeTab, setActiveTab] = useState('itinerary');
@@ -13,8 +24,11 @@ function App() {
   return (
     <div className="app">
       <header className="header">
-        <h1>歐洲之旅 2026</h1>
-        <p style={{ color: '#64748b', fontSize: '0.875rem' }}>布達佩斯 & 維也納</p>
+        <h1>EUROPE 2026</h1>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginTop: '0.5rem', fontSize: '0.75rem', color: '#94a3b8' }}>
+          <span><Camera size={12} /> BDP & VIE</span>
+          <span><Heart size={12} color="#ef4444" fill="#ef4444" /> 2 GUESTS</span>
+        </div>
       </header>
 
       <main className="content">
@@ -22,35 +36,44 @@ function App() {
           <div className="tab-itinerary">
             {itinerary.map((day, idx) => (
               <div key={idx} className="card">
-                <div className="date-badge">{day.date} ({day.day})</div>
-                <h2>{day.title}</h2>
-                
-                <div className="section-title"><Info size={16} /> 景點規劃</div>
-                {day.activities.map((act, aIdx) => (
-                  <div key={aIdx} className="activity">
-                    <div className="activity-time">{act.time}</div>
-                    <div className="activity-loc">{act.location}</div>
-                    <div className="activity-desc">{act.desc}</div>
-                    {act.note && <div className="note-box">💡 {act.note}</div>}
-                    <button className="maps-btn" onClick={() => openMaps(act.location, act.lat, act.lng)}>
-                      <Navigation size={14} /> 導航
-                    </button>
+                <div className="card-content">
+                  <div className="date-badge">{day.date} · {day.day}</div>
+                  <h2 className="day-title">{day.title}</h2>
+                  
+                  <div className="transport-box">
+                    <Bus size={18} />
+                    <span>{day.transport}</span>
                   </div>
-                ))}
 
-                <div className="section-title" style={{ marginTop: '1.5rem', color: '#e67e22' }}>
-                  <Utensils size={16} /> 推薦餐廳
-                </div>
-                <div className="dining-list">
-                  {day.dining.map((res, rIdx) => (
-                    <div key={rIdx} className="dining-item">
-                      <div className="dining-name">{res.name}</div>
-                      <div className="dining-desc">{res.desc}</div>
-                      <button className="maps-btn small" onClick={() => openMaps(res.name, res.lat, res.lng)}>
-                        地點
+                  <div className="section-divider">Spots</div>
+                  {day.activities.map((act, aIdx) => (
+                    <div key={aIdx} className="activity">
+                      <img src={act.image} alt={act.location} className="spot-img" loading="lazy" />
+                      <div className="activity-header">
+                        <div className="activity-loc">{act.location}</div>
+                        <div className="activity-time">{act.time}</div>
+                      </div>
+                      <div className="activity-desc">{act.desc}</div>
+                      {act.note && <div className="note-box">💡 {act.note}</div>}
+                      <button className="maps-btn" onClick={() => openMaps(act.location, act.lat, act.lng)}>
+                        <Navigation size={12} /> Google Maps
                       </button>
                     </div>
                   ))}
+
+                  <div className="section-divider">Dining for Two</div>
+                  <div className="dining-list">
+                    {day.dining.map((res, rIdx) => (
+                      <div key={rIdx} className="dining-card">
+                        <div className="dining-type">{res.type}</div>
+                        <div className="dining-name">{res.name}</div>
+                        <div className="dining-desc">{res.desc}</div>
+                        <button className="maps-btn" style={{ background: 'transparent', border: '1px solid #334155' }} onClick={() => openMaps(res.name, res.lat, res.lng)}>
+                          <MapPin size={12} /> 地點
+                        </button>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             ))}
@@ -59,16 +82,14 @@ function App() {
 
         {activeTab === 'dining' && (
           <div className="tab-dining">
-            <h2>美食匯整</h2>
-            <p style={{ marginBottom: '1.5rem', color: '#64748b' }}>旅程中所有的推薦餐廳</p>
+            <h2 style={{ marginBottom: '1.5rem' }}>美食匯整</h2>
             {itinerary.map((day) => day.dining).flat().map((res, idx) => (
-              <div key={idx} className="card">
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <h3>{res.name}</h3>
-                </div>
-                <p className="activity-desc" style={{ marginTop: '0.5rem' }}>{res.desc}</p>
+              <div key={idx} className="dining-card" style={{ padding: '1.25rem', marginBottom: '1rem', background: 'var(--card)' }}>
+                <div className="dining-type">{res.type}</div>
+                <h3 className="dining-name" style={{ fontSize: '1.1rem' }}>{res.name}</h3>
+                <p className="dining-desc" style={{ marginBottom: '1rem' }}>{res.desc}</p>
                 <button className="maps-btn" onClick={() => openMaps(res.name, res.lat, res.lng)}>
-                  <MapPin size={16} /> 查看地點
+                  <MapPin size={14} /> 查看地圖
                 </button>
               </div>
             ))}
@@ -83,7 +104,7 @@ function App() {
         </div>
         <div className={`nav-item ${activeTab === 'dining' ? 'active' : ''}`} onClick={() => setActiveTab('dining')}>
           <Utensils size={24} />
-          <span>全部美食</span>
+          <span>美食清單</span>
         </div>
       </nav>
     </div>
