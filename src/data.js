@@ -1,5 +1,101 @@
 export const itinerary = [
   {
+    date: '3/21',
+    day: '五',
+    title: '啟程：台灣飛往杜拜',
+    transport: '搭乘國際航班由桃園機場 (TPE) 前往杜拜 (DXB)。抵達後搭乘機場地鐵或計程車前往市中心。',
+    activities: [
+      {
+        time: '晚上',
+        location: '哈里發塔 & 杜拜噴泉',
+        desc: '在世界第一高樓下欣賞壯觀的音樂噴泉，或登頂俯瞰沙漠中的璀璨夜景。',
+        image: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=800&q=80',
+        lat: 25.1972,
+        lng: 55.2744
+      }
+    ],
+    dining: [
+      { name: 'Time Out Market Dubai', type: '美食廣場', desc: '集合杜拜頂尖廚師的料理，選擇多樣且氛圍熱鬧。', lat: 25.1953, lng: 55.2789 },
+      { name: 'Thiptara', type: '泰式料理', desc: '位於噴泉第一排，是一場味覺與視覺的極致饗宴。', lat: 25.1942, lng: 55.2754 },
+      { name: 'Logma', type: '現代阿聯酋料理', desc: '適合初試阿拉伯風味，環境時尚。', lat: 25.196, lng: 55.279 }
+    ]
+  },
+  {
+    date: '3/22',
+    day: '六',
+    title: '舊城魅力與沙漠驚喜',
+    transport: '早上使用 Abra 傳統木船橫渡杜拜河，下午由沙漠衝沙接駁車接送。',
+    activities: [
+      {
+        time: '上午',
+        location: '黃金市場與香料市場',
+        desc: '穿梭在古老的巷弄中，感受濃郁的香料氣息與耀眼的黃金裝飾。',
+        image: 'https://images.unsplash.com/photo-1541746972996-4e0b0f43e03a?auto=format&fit=crop&w=800&q=80',
+        lat: 25.2733,
+        lng: 55.2952
+      },
+      {
+        time: '下午',
+        location: '沙漠衝沙冒險',
+        desc: '在紅沙丘中體驗速度感，晚上在營地享受肚皮舞表演與星空晚餐。',
+        image: 'https://images.unsplash.com/photo-1452022582947-af3a14542586?auto=format&fit=crop&w=800&q=80',
+        lat: 24.8472,
+        lng: 55.6023
+      }
+    ],
+    dining: [
+      { name: 'Arabian Tea House', type: '傳統早午餐', desc: '這是一座被綠意包圍的綠洲建築，必點傳統阿拉伯托盤。', lat: 25.2635, lng: 55.3003 },
+      { name: 'Al Fanar Seafood Market', type: '海鮮料理', desc: '體驗 1960 年代的杜拜氣氛，品嚐新鮮的阿拉伯海味。', lat: 25.2281, lng: 55.3527 }
+    ]
+  },
+  {
+    date: '3/23',
+    day: '日',
+    title: '未來感建築與棕櫚島',
+    transport: '搭乘杜拜單軌電車 (Monorail) 前往棕櫚島，或租車自駕。',
+    activities: [
+      {
+        time: '上午',
+        location: '未來博物館 (Museum of the Future)',
+        desc: '參觀這座被譽為「地球上最美建築」的環形地標，探索 2071 年的科技願景。',
+        image: 'https://images.unsplash.com/photo-1647427017067-8f33ccbae493?auto=format&fit=crop&w=800&q=80',
+        lat: 25.2191,
+        lng: 55.2819
+      },
+      {
+        time: '下午',
+        location: '朱美拉棕櫚島與亞特蘭提斯',
+        desc: '在人造奇蹟島嶼上漫步，觀看氣勢磅礡的亞特蘭提斯飯店。',
+        image: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=800&q=80',
+        lat: 25.131,
+        lng: 55.1182
+      }
+    ],
+    dining: [
+      { name: 'Ossiano', type: '水下餐廳', desc: '與成千上萬的海洋生物共餐，極致奢華的浪漫。', lat: 25.1305, lng: 55.1171 },
+      { name: 'Dinner in the Sky', type: '景觀餐廳', desc: '在 50 公尺的高空用餐，俯瞰整個棕櫚島。', lat: 25.0924, lng: 55.1472 }
+    ]
+  },
+  {
+    date: '3/24',
+    day: '一',
+    title: '杜拜最後巡禮 -> 布達佩斯',
+    transport: '前往杜拜國際機場 (DXB) 搭乘航班飛往布達佩斯 (BUD)。',
+    activities: [
+      {
+        time: '上午',
+        location: '杜拜奇蹟花園',
+        desc: '漫步在由 1.5 億朵鮮花組成的各式巨型裝置中，色彩繽紛。',
+        image: 'https://images.unsplash.com/photo-1582650843446-c2830f3a4647?auto=format&fit=crop&w=800&q=80',
+        lat: 25.0597,
+        lng: 55.2445
+      }
+    ],
+    dining: [
+      { name: 'Eggspectation', type: '海灘早午餐', desc: '位於 JBR 海灘旁，是當地非常受歡迎的慢活早餐點。', lat: 25.0772, lng: 55.1301 }
+    ]
+  },
+  {
     date: '3/25',
     day: '三',
     title: '抵達與復活節市集',
