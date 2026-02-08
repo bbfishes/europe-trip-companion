@@ -47,6 +47,44 @@ body {
   letter-spacing: 0.1em;
 }
 
+.day-tabs {
+  display: flex;
+  overflow-x: auto;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  padding-bottom: 0.5rem;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
+}
+
+.day-tabs::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.day-tab-item {
+  flex: 0 0 auto;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  padding: 0.5rem 0.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  min-width: 50px;
+}
+
+.day-tab-date {
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+.day-tab-name {
+  font-size: 0.65rem;
+  color: var(--text-light);
+}
+
 .content {
   flex: 1;
   padding: 1rem;

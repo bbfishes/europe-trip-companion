@@ -21,6 +21,20 @@ function App() {
     window.open(url, '_blank');
   };
 
+  const scrollToDay = (idx) => {
+    const element = document.getElementById(`day-${idx}`);
+    if (element) {
+      const headerOffset = 130;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   const travelNotes = [
     {
       city: '杜拜 (Dubai)',
@@ -56,13 +70,27 @@ function App() {
           <span><Camera size={12} /> BDP & VIE</span>
           <span><Heart size={12} color="#ef4444" fill="#ef4444" /> 2 GUESTS</span>
         </div>
+        {activeTab === 'itinerary' && (
+          <div className="day-tabs">
+            {itinerary.map((day, idx) => (
+              <div 
+                key={idx} 
+                className="day-tab-item" 
+                onClick={() => scrollToDay(idx)}
+              >
+                <div className="day-tab-date">{day.date.split('/')[1]}</div>
+                <div className="day-tab-name">{day.day}</div>
+              </div>
+            ))}
+          </div>
+        )}
       </header>
 
       <main className="content">
         {activeTab === 'itinerary' && (
           <div className="tab-itinerary">
             {itinerary.map((day, idx) => (
-              <div key={idx} className="card">
+              <div key={idx} id={`day-${idx}`} className="card">
                 <div className="card-content">
                   <div className="date-badge">{day.date} · {day.day}</div>
                   <h2 className="day-title">{day.title}</h2>
