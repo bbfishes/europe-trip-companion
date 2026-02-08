@@ -16,8 +16,8 @@ import {
 function App() {
   const [activeTab, setActiveTab] = useState('itinerary');
 
-  const openMaps = (loc, lat, lng) => {
-    const url = `https://www.google.com/maps/search/?api=1&query=${lat},${lng}`;
+  const openMaps = (loc) => {
+    const url = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(loc)}`;
     window.open(url, '_blank');
   };
 
@@ -81,7 +81,7 @@ function App() {
                       </div>
                       <div className="activity-desc">{act.desc}</div>
                       {act.note && <div className="note-box">💡 {act.note}</div>}
-                      <button className="maps-btn" onClick={() => openMaps(act.location, act.lat, act.lng)}>
+                      <button className="maps-btn" onClick={() => openMaps(act.location)}>
                         <Navigation size={12} /> Google Maps
                       </button>
                     </div>
@@ -94,7 +94,7 @@ function App() {
                         <div className="dining-type">{res.type}</div>
                         <div className="dining-name">{res.name}</div>
                         <div className="dining-desc">{res.desc}</div>
-                        <button className="maps-btn" style={{ background: 'transparent', border: '1px solid #334155' }} onClick={() => openMaps(res.name, res.lat, res.lng)}>
+                        <button className="maps-btn" style={{ background: 'transparent', border: '1px solid #334155' }} onClick={() => openMaps(res.name)}>
                           <MapPin size={12} /> 地點
                         </button>
                       </div>
@@ -114,7 +114,7 @@ function App() {
                 <div className="dining-type">{res.type}</div>
                 <h3 className="dining-name" style={{ fontSize: '1.1rem' }}>{res.name}</h3>
                 <p className="dining-desc" style={{ marginBottom: '1rem' }}>{res.desc}</p>
-                <button className="maps-btn" onClick={() => openMaps(res.name, res.lat, res.lng)}>
+                <button className="maps-btn" onClick={() => openMaps(res.name)}>
                   <MapPin size={14} /> 查看地圖
                 </button>
               </div>
