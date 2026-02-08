@@ -1,5 +1,16 @@
 export const itinerary = [
   {
+    date: '3/20',
+    day: '五',
+    title: '出發前夕：前往機場',
+    transport: '預約機場接送從土城前往桃園國際機場 (TPE)。',
+    activities: [
+      { time: '20:50', location: '土城', desc: '機場接送車輛抵達，準備出發。', lat: 24.9723, lng: 121.4431 },
+      { time: '21:40', location: '桃園機場 (TPE)', desc: '抵達桃園機場第二航廈，辦理登機與行李託運。', lat: 25.0797, lng: 121.2342 }
+    ],
+    dining: []
+  },
+  {
     date: '3/21',
     day: '六',
     title: '啟程與杜拜初探',
