@@ -88,7 +88,7 @@ export const itinerary = [
     date: '3/24',
     day: '二',
     title: '杜拜最後巡禮 -> 布達佩斯',
-    transport: '前往杜拜國際機場 (DXB) 搭乘航班飛往布達佩斯 (BUD)。',
+    transport: '搭乘阿聯酋 EK0111 (10:05 DXB -> 13:05 BUD)。抵達後前往布達佩斯市中心。',
     activities: [
       {
         time: '上午',
@@ -97,10 +97,19 @@ export const itinerary = [
         image: 'https://images.unsplash.com/photo-1582650843446-c2830f3a4647?auto=format&fit=crop&w=800&q=80',
         lat: 25.0597,
         lng: 55.2445
+      },
+      {
+        time: '下午',
+        location: '抵達布達佩斯 & 飯店 Check-in',
+        desc: '抵達航廈 2B，搭乘 100E 巴士前往市區，入住後稍微休息展開東歐之旅。',
+        image: 'https://images.unsplash.com/photo-1533929736458-ca588d08c8be?auto=format&fit=crop&w=800&q=80',
+        lat: 47.4979,
+        lng: 19.0402
       }
     ],
     dining: [
-      { name: 'Eggspectation', type: '海灘早午餐', desc: '位於 JBR 海灘旁，是當地非常受歡迎的慢活早餐點。', lat: 25.0772, lng: 55.1301 }
+      { name: 'Comme Chez Soi', type: '義式料理', desc: '雙人首選！建議抵達第一晚就來慶祝，鵝肝極受好評。', lat: 47.4957, lng: 19.0515 },
+      { name: 'Eggspectation', type: '海灘早午餐', desc: '出發前的最後一餐。', lat: 25.0772, lng: 55.1301 }
     ]
   },
   {
@@ -308,8 +317,8 @@ export const itinerary = [
   {
     date: '4/02',
     day: '四',
-    title: '離歐：布達佩斯飛往杜拜',
-    transport: '在市中心 Deák Ferenc tér 搭乘 100E 巴士前往機場，搭機前往杜拜中轉。',
+    title: '離歐：阿聯酋 EK0112 飛往杜拜',
+    transport: '搭乘 EK0112 (16:05 BUD -> 23:25 DXB)。抵達後在杜拜機場轉機。',
     activities: [
       {
         time: '下午',
