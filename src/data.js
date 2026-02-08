@@ -2,9 +2,17 @@ export const itinerary = [
   {
     date: '3/21',
     day: '六',
-    title: '啟程：台灣飛往杜拜',
-    transport: '搭乘國際航班由桃園機場 (TPE) 前往杜拜 (DXB)。抵達後搭乘機場地鐵或計程車前往市中心。',
+    title: '啟程：阿聯酋 EK0387 飛往杜拜',
+    transport: '00:20 於桃園機場 (TPE) 起飛，06:10 抵達杜拜 (DXB)。抵達後搭乘機場地鐵或計程車前往市中心。',
     activities: [
+      {
+        time: '早上',
+        location: '抵達杜拜 & 飯店寄放行李',
+        desc: '抵達航廈 T3，辦理入境後前往市區，開啟第一天的旅程。',
+        image: 'https://images.unsplash.com/photo-1582650843446-c2830f3a4647?auto=format&fit=crop&w=800&q=80',
+        lat: 25.2532,
+        lng: 55.3657
+      },
       {
         time: '晚上',
         location: '哈里發塔 & 杜拜噴泉',
@@ -300,22 +308,37 @@ export const itinerary = [
   {
     date: '4/02',
     day: '四',
-    title: '賦歸',
-    transport: '在市中心 Deák Ferenc tér 搭乘 100E 巴士直達機場 (40 min)。',
+    title: '離歐：布達佩斯飛往杜拜',
+    transport: '在市中心 Deák Ferenc tér 搭乘 100E 巴士前往機場，搭機前往杜拜中轉。',
     activities: [
       {
-        time: '早上',
-        location: '多瑙河畔慢步早午餐',
-        desc: '為旅程劃下完美句點，靜靜欣賞最後一眼多瑙河。',
+        time: '下午',
+        location: '布達佩斯機場 (BUD)',
+        desc: '帶著滿滿的回憶與伴手禮，準備前往機場辦理退稅與登機。',
         image: 'https://images.unsplash.com/photo-1549488344-1f9b8d2bd1f3?auto=format&fit=crop&w=800&q=80',
-        lat: 47.495,
-        lng: 19.05
+        lat: 47.4385,
+        lng: 19.2523
       }
     ],
     dining: [
-      { name: 'Deryne Bisztro', type: '布達精緻早午餐', desc: '深受本地上流階層喜愛，音樂、香檳、美味的兩人大餐。', lat: 47.4975, lng: 19.0285 },
-      { name: 'Szimply', type: '現代創意早餐', desc: '網美級的擺盤與健康食材，隱身在庭院小徑中。', lat: 47.4945, lng: 19.0535 },
-      { name: 'Anyam Dobolta', type: '溫馨手工早餐', desc: '像鄰家媽媽親手做的麵包與果醬，純樸而感動。', lat: 47.494, lng: 19.041 }
+      { name: 'Deryne Bisztro', type: '布達精緻早午餐', desc: '離歐前的最後一餐，再次回味歐洲的悠閒氣氛。', lat: 47.4975, lng: 19.0285 }
     ]
+  },
+  {
+    date: '4/03',
+    day: '五',
+    title: '返家：阿聯酋 EK0366 飛抵台灣',
+    transport: '03:45 由杜拜 (DXB) 起飛，16:10 抵達桃園機場 (TPE)。',
+    activities: [
+      {
+        time: '下午',
+        location: '抵達台灣',
+        desc: '順利抵達家園，結束這趟精彩的歐亞跨國之旅。',
+        image: 'https://images.unsplash.com/photo-1541746972996-4e0b0f43e03a?auto=format&fit=crop&w=800&q=80',
+        lat: 25.0797,
+        lng: 121.2342
+      }
+    ],
+    dining: []
   }
 ];
