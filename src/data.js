@@ -14,11 +14,11 @@ export const itinerary = [
     date: '3/21',
     day: '六',
     title: '啟程與杜拜初探',
-    transport: 'EK0387 (00:20 TPE -> 06:10 DXB)。抵達後搭乘機場計程車前往 Downtown。',
+    transport: 'EK0387 (00:20 TPE -> 06:10 DXB)。抵達後搭乘機場計程車前往 Business Bay。',
     activities: [
       { time: '00:20', location: '桃園機場 (TPE)', desc: '搭乘阿聯酋航空前往杜拜。', lat: 25.0797, lng: 121.2342 },
       { time: '06:10', location: '杜拜機場 (DXB)', desc: '抵達航廈 T3，辦理入境並提取行李。', lat: 25.2532, lng: 55.3657 },
-      { time: '08:00', location: '飯店寄放行李', desc: '前往 Downtown 區域飯店寄放行李，稍作梳洗。', lat: 25.1972, lng: 55.2744 },
+      { time: '08:00', location: 'Park Regis Business Bay', desc: '抵達飯店寄放行李，稍作梳洗。', lat: 25.1874, lng: 55.2756 },
       { time: '10:00', location: '杜拜購物中心 (Dubai Mall)', desc: '漫步全球最大購物中心，參觀室內水族館外牆。', lat: 25.1974, lng: 55.2797 },
       { time: '14:00', location: '哈里發塔 (Burj Khalifa)', desc: '登頂 124+125 層，俯瞰沙漠與海洋交界的壯麗景觀。', lat: 25.1972, lng: 55.2744 },
       { time: '18:30', location: '杜拜噴泉 (Dubai Fountain)', desc: '欣賞每半小時一場的音樂噴泉表演。', lat: 25.1957, lng: 55.2764 }
