@@ -1,7 +1,7 @@
 export const itinerary = [
   {
     date: '3/21',
-    day: '五',
+    day: '六',
     title: '啟程：台灣飛往杜拜',
     transport: '搭乘國際航班由桃園機場 (TPE) 前往杜拜 (DXB)。抵達後搭乘機場地鐵或計程車前往市中心。',
     activities: [
@@ -22,7 +22,7 @@ export const itinerary = [
   },
   {
     date: '3/22',
-    day: '六',
+    day: '日',
     title: '舊城魅力與沙漠驚喜',
     transport: '早上使用 Abra 傳統木船橫渡杜拜河，下午由沙漠衝沙接駁車接送。',
     activities: [
@@ -50,7 +50,7 @@ export const itinerary = [
   },
   {
     date: '3/23',
-    day: '日',
+    day: '一',
     title: '未來感建築與棕櫚島',
     transport: '搭乘杜拜單軌電車 (Monorail) 前往棕櫚島，或租車自駕。',
     activities: [
@@ -78,7 +78,7 @@ export const itinerary = [
   },
   {
     date: '3/24',
-    day: '一',
+    day: '二',
     title: '杜拜最後巡禮 -> 布達佩斯',
     transport: '前往杜拜國際機場 (DXB) 搭乘航班飛往布達佩斯 (BUD)。',
     activities: [
