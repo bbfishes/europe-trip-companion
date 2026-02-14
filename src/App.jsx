@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { itinerary } from './data';
 import { 
   Calendar, 
@@ -10,11 +10,84 @@ import {
   Camera, 
   Heart,
   ExternalLink,
-  Info
+  Info,
+  Search,
+  Sun,
+  Moon,
+  RefreshCw,
+  Wifi,
+  WifiOff
 } from 'lucide-react';
 
 function App() {
   const [activeTab, setActiveTab] = useState('itinerary');
+  const [darkMode, setDarkMode] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [isOnline, setIsOnline] = useState(navigator.onLine);
+  const [isLoading, setIsLoading] = useState(true);
+  const [exchangeRates, setExchangeRates] = useState({});
+  const [currencyFrom, setCurrencyFrom] = useState('TWD');
+  const [currencyTo, setCurrencyTo] = useState('EUR');
+  const [currencyAmount, setCurrencyAmount] = useState('');
+  const [weather, setWeather] = useState({});
+  const [weatherLoading, setWeatherLoading] = useState({});
+
+  // Loading simulation
+  useEffect(() => {
+    const timer = setTimeout(() => setIsLoading(false), 1500);
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Dark mode
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', darkMode ? 'dark' : 'light');
+  }, [darkMode]);
+
+  // Online/Offline detection
+  useEffect(() => {
+    const handleOnline = () => setIsOnline(true);
+    const handleOffline = () => setIsOnline(false);
+    window.addEventListener('online', handleOnline);
+    window.addEventListener('offline', handleOffline);
+    return () => {
+      window.removeEventListener('online', handleOnline);
+      window.removeEventListener('offline', handleOffline);
+    };
+  }, []);
+
+  // Fetch exchange rates
+  useEffect(() => {
+    fetch('https://api.exchangerate-api.com/v4/latest/TWD')
+      .then(res => res.json())
+      .then(data => setExchangeRates(data.rates || {}))
+      .catch(() => setExchangeRates({ EUR: 0.03, HUF: 1.1, AED: 0.11, USD: 0.031 }));
+  }, []);
+
+  // Fetch weather for cities
+  useEffect(() => {
+    const cities = {
+      'Dubai': { lat: 25.2048, lng: 55.2708 },
+      'Budapest': { lat: 47.4979, lng: 19.0402 },
+      'Vienna': { lat: 48.2082, lng: 16.3738 }
+    };
+    
+    Object.entries(cities).forEach(([city, coords]) => {
+      setWeatherLoading(prev => ({ ...prev, [city]: true }));
+      fetch(`https://api.open-meteo.com/v1/forecast?latitude=${coords.lat}&longitude=${coords.lng}&current_weather=true`)
+        .then(res => res.json())
+        .then(data => {
+          setWeather(prev => ({ ...prev, [city]: data.current_weather }));
+          setWeatherLoading(prev => ({ ...prev, [city]: false }));
+        })
+        .catch(() => setWeatherLoading(prev => ({ ...prev, [city]: false })));
+    });
+  }, []);
+
+  const convertCurrency = () => {
+    if (!currencyAmount || !exchangeRates[currencyTo]) return '0';
+    const rate = exchangeRates[currencyTo] || 1;
+    return (parseFloat(currencyAmount) * rate).toFixed(2);
+  };
 
   const openMaps = (loc) => {
     const url = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(loc)}`;
@@ -27,19 +100,31 @@ function App() {
       const headerOffset = 130;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
+      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
     }
   };
+
+  // Search functionality
+  const searchItems = searchQuery.trim() ? itinerary.map(day => ({
+    day: day.title,
+    date: day.date,
+    items: [
+      ...day.activities.map(a => ({ type: '景點', name: a.location, desc: a.desc })),
+      ...day.dining.map(d => ({ type: '餐廳', name: d.name, desc: d.desc }))
+    ]
+  })).filter(d => 
+    d.items.some(item => 
+      item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      item.desc.toLowerCase().includes(searchQuery.toLowerCase())
+    )
+  ) : [];
 
   const travelNotes = [
     {
       city: '杜拜 (Dubai)',
       currency: '阿聯酋迪拉姆 (AED)',
-      weather: '3月氣溫約 20-30°C，晴朗乾燥。早晚溫差稍大。',
+      weather: weather['Dubai'] ? `${weather['Dubai'].temperature}°C` : '載入中...',
+      weatherLoading: weatherLoading['Dubai'],
       transport: '建議使用地鐵 (Metro) 或計程車/Careem/Uber。需購買 Nol Card。',
       plug: '230V / 50Hz / 插頭為 G 型 (英標三平頭)。',
       notes: '進入購物中心或餐廳建議帶薄外套（冷氣極強）。遵守當地服裝規定（肩膀、膝蓋）。'
@@ -47,7 +132,8 @@ function App() {
     {
       city: '布達佩斯 (Budapest)',
       currency: '匈牙利福林 (HUF) / 歐元亦通但匯率較差',
-      weather: '3月氣溫約 5-15°C，春意漸濃，偶有陣雨。建議洋蔥式穿法。',
+      weather: weather['Budapest'] ? `${weather['Budapest'].temperature}°C` : '載入中...',
+      weatherLoading: weatherLoading['Budapest'],
       transport: '地鐵 M1, M2, M3 交會於 Deák Ferenc tér。電車與地鐵皆可買單程票或日票。',
       plug: '230V / 50Hz / 插頭為 C 型 & F 型 (歐標雙圓頭)。',
       notes: '推薦去賽切尼溫泉，Deák Ferenc tér 附近生活機能極佳。記得攜帶泳衣。'
@@ -55,21 +141,85 @@ function App() {
     {
       city: '維也納 (Vienna)',
       currency: '歐元 (EUR)',
-      weather: '3月氣溫約 4-13°C。天氣多變，建議帶雨具與防風外套。',
+      weather: weather['Vienna'] ? `${weather['Vienna'].temperature}°C` : '載入中...',
+      weatherLoading: weatherLoading['Vienna'],
       transport: '大眾運輸發達 (U-Bahn, S-Bahn, 電車)。可購買維也納卡 (Vienna City Card)。',
       plug: '230V / 50Hz / 插頭為 C 型 & F 型 (歐標雙圓頭)。',
       notes: '週日大多數商店不營業。參觀美泉宮或藝術史博物館建議提前預約。水龍頭水可直接飲用。'
     }
   ];
 
+  if (isLoading) {
+    return (
+      <div className="loading-screen">
+        <div className="loading-content">
+          <div className="loading-spinner"></div>
+          <p>載入中...</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="app">
-      <header className="header">
-        <h1>EUROPE 2026</h1>
+      <header className="Header">
+        <div className="header-top">
+          <h1>EUROPE 2026</h1>
+          <button className="theme-toggle" onClick={() => setDarkMode(!darkMode)}>
+            {darkMode ? <Sun size={20} /> : <Moon size={20} />}
+          </button>
+        </div>
+        {!isOnline && (
+          <div className="offline-banner">
+            <WifiOff size={14} /> 離線模式 - 部分功能可能無法使用
+          </div>
+        )}
         <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginTop: '0.5rem', fontSize: '0.75rem', color: '#94a3b8' }}>
           <span><Camera size={12} /> BDP & VIE</span>
           <span><Heart size={12} color="#ef4444" fill="#ef4444" /> 2 GUESTS</span>
         </div>
+        
+        {/* Search Bar */}
+        <div className="search-container">
+          <Search size={16} className="search-icon" />
+          <input 
+            type="text" 
+            placeholder="搜尋餐廳、景點..." 
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="search-input"
+          />
+        </div>
+
+        {/* Currency Converter */}
+        <div className="currency-converter">
+          <div className="currency-row">
+            <select value={currencyFrom} onChange={(e) => setCurrencyFrom(e.target.value)}>
+              <option value="TWD">台幣</option>
+              <option value="EUR">歐元</option>
+              <option value="HUF">福林</option>
+              <option value="AED">迪拉姆</option>
+              <option value="USD">美元</option>
+            </select>
+            <input 
+              type="number" 
+              placeholder="金額" 
+              value={currencyAmount}
+              onChange={(e) => setCurrencyAmount(e.target.value)}
+            />
+          </div>
+          <div className="currency-row">
+            <select value={currencyTo} onChange={(e) => setCurrencyTo(e.target.value)}>
+              <option value="EUR">歐元</option>
+              <option value="TWD">台幣</option>
+              <option value="HUF">福林</option>
+              <option value="AED">迪拉姆</option>
+              <option value="USD">美元</option>
+            </select>
+            <div className="currency-result">{convertCurrency()}</div>
+          </div>
+        </div>
+
         {activeTab === 'itinerary' && (
           <div className="day-tabs">
             {itinerary.map((day, idx) => (
@@ -87,7 +237,35 @@ function App() {
       </header>
 
       <main className="content">
-        {activeTab === 'itinerary' && (
+        {/* Search Results */}
+        {searchQuery && (
+          <div className="search-results">
+            <h3>搜尋結果</h3>
+            {searchItems.length === 0 ? (
+              <p className="no-results">找不到符合的結果</p>
+            ) : (
+              searchItems.map((item, idx) => (
+                <div key={idx} className="search-result-item">
+                  <div className="result-day">{item.date} - {item.day}</div>
+                  {item.items.filter(i => 
+                    i.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                    i.desc.toLowerCase().includes(searchQuery.toLowerCase())
+                  ).map((result, rIdx) => (
+                    <div key={rIdx} className="result-content">
+                      <span className={`result-type ${result.type === '餐廳' ? 'dining' : 'attraction'}`}>
+                        {result.type}
+                      </span>
+                      <strong>{result.name}</strong>
+                      <p>{result.desc}</p>
+                    </div>
+                  ))}
+                </div>
+              ))
+            )}
+          </div>
+        )}
+
+        {!searchQuery && activeTab === 'itinerary' && (
           <div className="tab-itinerary">
             {itinerary.map((day, idx) => (
               <div key={idx} id={`day-${idx}`} className="card">
@@ -134,7 +312,7 @@ function App() {
           </div>
         )}
 
-        {activeTab === 'dining' && (
+        {!searchQuery && activeTab === 'dining' && (
           <div className="tab-dining">
             <h2 style={{ marginBottom: '1.5rem' }}>美食匯整</h2>
             {itinerary.map((day) => day.dining).flat().map((res, idx) => (
@@ -150,19 +328,26 @@ function App() {
           </div>
         )}
 
-        {activeTab === 'notes' && (
+        {!searchQuery && activeTab === 'notes' && (
           <div className="tab-notes">
             <h2 style={{ marginBottom: '1.5rem' }}>旅遊注意事項</h2>
             {travelNotes.map((note, idx) => (
               <div key={idx} className="card" style={{ marginBottom: '1.5rem' }}>
                 <div className="card-content">
-                  <h3 style={{ color: '#60a5fa', marginBottom: '1rem' }}>{note.city}</h3>
+                  <h3 style={{ color: '#60a5fa', marginBottom: '1rem' }}>
+                    {note.city}
+                    {note.weatherLoading ? (
+                      <RefreshCw size={14} className="weather-loading" />
+                    ) : (
+                      <span className="weather-badge">☀️ {note.weather}</span>
+                    )}
+                  </h3>
                   <div style={{ fontSize: '0.9rem', color: '#cbd5e1', lineHeight: '1.8' }}>
                     <div><strong>💰 貨幣：</strong> {note.currency}</div>
-                    <div><strong>☁️ 氣候：</strong> {note.weather}</div>
+                    <div><strong>☁️ 氣候：</strong> {note.weatherLoading ? '載入中...' : note.weather}</div>
                     <div><strong>🚌 交通：</strong> {note.transport}</div>
                     <div><strong>🔌 電器插頭：</strong> {note.plug}</div>
-                    <div style={{ marginTop: '0.5rem', padding: '0.75rem', background: '#1e293b', borderRadius: '8px', borderLeft: '4px solid #60a5fa' }}>
+                    <div style={{ marginTop: '0.5rem', padding: '0.75rem', background: 'var(--card)', borderRadius: '8px', borderLeft: '4px solid #60a5fa' }}>
                       <strong>📝 注意：</strong> {note.notes}
                     </div>
                   </div>
