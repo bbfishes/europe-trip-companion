@@ -25,10 +25,6 @@ function App() {
   const [searchQuery, setSearchQuery] = useState('');
   const [isOnline, setIsOnline] = useState(navigator.onLine);
   const [isLoading, setIsLoading] = useState(true);
-  const [exchangeRates, setExchangeRates] = useState({});
-  const [currencyFrom, setCurrencyFrom] = useState('TWD');
-  const [currencyTo, setCurrencyTo] = useState('EUR');
-  const [currencyAmount, setCurrencyAmount] = useState('');
   const [weather, setWeather] = useState({});
   const [weatherLoading, setWeatherLoading] = useState({});
 
@@ -55,14 +51,6 @@ function App() {
     };
   }, []);
 
-  // Fetch exchange rates
-  useEffect(() => {
-    fetch('https://api.exchangerate-api.com/v4/latest/TWD')
-      .then(res => res.json())
-      .then(data => setExchangeRates(data.rates || {}))
-      .catch(() => setExchangeRates({ EUR: 0.03, HUF: 1.1, AED: 0.11, USD: 0.031 }));
-  }, []);
-
   // Fetch weather for cities
   useEffect(() => {
     const cities = {
@@ -82,12 +70,6 @@ function App() {
         .catch(() => setWeatherLoading(prev => ({ ...prev, [city]: false })));
     });
   }, []);
-
-  const convertCurrency = () => {
-    if (!currencyAmount || !exchangeRates[currencyTo]) return '0';
-    const rate = exchangeRates[currencyTo] || 1;
-    return (parseFloat(currencyAmount) * rate).toFixed(2);
-  };
 
   const openMaps = (loc) => {
     const url = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(loc)}`;
@@ -189,35 +171,6 @@ function App() {
             onChange={(e) => setSearchQuery(e.target.value)}
             className="search-input"
           />
-        </div>
-
-        {/* Currency Converter */}
-        <div className="currency-converter">
-          <div className="currency-row">
-            <select value={currencyFrom} onChange={(e) => setCurrencyFrom(e.target.value)}>
-              <option value="TWD">台幣</option>
-              <option value="EUR">歐元</option>
-              <option value="HUF">福林</option>
-              <option value="AED">迪拉姆</option>
-              <option value="USD">美元</option>
-            </select>
-            <input 
-              type="number" 
-              placeholder="金額" 
-              value={currencyAmount}
-              onChange={(e) => setCurrencyAmount(e.target.value)}
-            />
-          </div>
-          <div className="currency-row">
-            <select value={currencyTo} onChange={(e) => setCurrencyTo(e.target.value)}>
-              <option value="EUR">歐元</option>
-              <option value="TWD">台幣</option>
-              <option value="HUF">福林</option>
-              <option value="AED">迪拉姆</option>
-              <option value="USD">美元</option>
-            </select>
-            <div className="currency-result">{convertCurrency()}</div>
-          </div>
         </div>
 
         {activeTab === 'itinerary' && (
